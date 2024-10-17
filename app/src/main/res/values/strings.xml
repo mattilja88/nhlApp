@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">nhlApp</string>
+    <string name="app_title">NHL</string>
+    <string name="back">Back</string>
+    <string name="home">Home</string>
+    <string name="conferences">Konferenssit</string>
+    <string name="divisions">Divisionat</string>
+    <string name="games">Ottelut</string>
+    <string name="monthly_games">Kuukauden pelit</string>
+    <string name="vs_text">vs</string>
+    <string name="previous_button">Previous</string>
+    <string name="next_button">Next</string>
+    <string name="team_leaders">Team Leaders</string>
+    <string name="goals">Goals</string>
+    <string name="goal_time">Erä: %1$s, Aika: %2$s</string>
+    <string name="assist">Syöttö: %1$s</string>
+    <string name="team_leader_category_goals">Eniten maaleja</string>
+    <string name="team_leader_category_assists">Eniten syöttöjä</string>
+    <string name="team_leader_category_wins">Eniten voittoja</string>
+    <string name="team_leader_category_unknown">Tuntematon kategoria</string>
+    <string name="ladataan">Ladataan</string>
+    <string name="west_conf">Läntinen Konferenssi</string>
+    <string name="east_conf">Itäinen Konferenssi</string>
+    <string name="unknown_conf">tuntematon konferenssi</string>
+    <string name="west_divs">Läntiset Divisionat</string>
+    <string name="east_divs">Itäiset Divisionat</string>
+    <string name="joukkue">Joukkue</string>
 </resources>

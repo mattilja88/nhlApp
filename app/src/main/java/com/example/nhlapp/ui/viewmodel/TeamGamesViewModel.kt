@@ -6,8 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nhlapp.ui.model.GameWeekResponse
-import com.example.nhlapp.ui.model.GamesApi
 import com.example.nhlapp.ui.model.Schedule
 import com.example.nhlapp.ui.model.TeamGamesApi
 import kotlinx.coroutines.launch

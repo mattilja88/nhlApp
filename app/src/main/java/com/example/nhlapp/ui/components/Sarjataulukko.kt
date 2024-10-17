@@ -1,6 +1,5 @@
 package com.example.nhlapp.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +18,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import com.example.nhlapp.ui.viewmodel.TeamGamesUIState
 import com.example.nhlapp.ui.viewmodel.TeamGamesViewModel
+import androidx.compose.ui.res.stringResource
+import com.example.nhlapp.R
 
 @Composable
 fun KokoLiiga(
@@ -51,7 +52,7 @@ fun KokoLiiga(
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = "Joukkue",
+                    text = stringResource(R.string.joukkue),
                     modifier = Modifier.weight(4.5f),
                     fontWeight = FontWeight.Bold,
                 )
@@ -115,7 +116,6 @@ fun KokoLiiga(
                     .clickable {
                         teamGamesViewModel.getTeamGames(team.teamAbbrev.default, "now")
                         navController.navigate("TeamGames")
-                        Log.d("Responsetest", team.teamAbbrev.default)
                     }
             ) {
                 Text(

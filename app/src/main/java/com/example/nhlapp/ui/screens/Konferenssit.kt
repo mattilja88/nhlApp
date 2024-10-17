@@ -18,6 +18,8 @@ import androidx.navigation.NavHostController
 import com.example.nhlapp.ui.viewmodel.StandingsUIState
 import com.example.nhlapp.ui.viewmodel.TeamGamesUIState
 import com.example.nhlapp.ui.viewmodel.TeamGamesViewModel
+import androidx.compose.ui.res.stringResource
+import com.example.nhlapp.R
 
 @Composable
 fun Konferenssit(
@@ -34,9 +36,9 @@ fun Konferenssit(
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally) {
         val konferenssiSuomeksi = when(konferenssi) {
-            "Western" -> "Läntinen Konferenssi"
-            "Eastern" -> "Itäinen Konferenssi"
-            else -> "tuntematon konferenssi"
+            "Western" -> stringResource(R.string.west_conf)
+            "Eastern" -> stringResource(R.string.east_conf)
+            else -> stringResource(R.string.unknown_conf)
         }
         Text(
             text = "$konferenssiSuomeksi",
@@ -68,7 +70,7 @@ fun Konferenssit(
                     contentColor = Color.White
                 )
             ) {
-                Text(text = "Läntinen konferenssi")
+                Text(text = stringResource(R.string.west_conf))
             }
             Button(
                 onClick = { konferenssi = "Eastern" },
@@ -77,7 +79,7 @@ fun Konferenssit(
                     contentColor = Color.White
                 )
             ) {
-                Text(text = "Itäinen konferenssi")
+                Text(text = stringResource(R.string.east_conf))
             }
         }
     }

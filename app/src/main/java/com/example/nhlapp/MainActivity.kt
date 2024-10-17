@@ -8,18 +8,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -28,6 +27,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -71,10 +72,10 @@ fun NhlApp(standingsViewModel: StandingsViewModel = viewModel(),
            gamesViewModel: GamesViewModel= viewModel(),
            teamGamesViewModel: TeamGamesViewModel = viewModel()){
     val items = listOf(
-        TabItem("NHL", Icons.Filled.Home, "Home"),
-        TabItem("Konferenssit", Icons.Filled.Menu, "Konferenssit"),
-        TabItem("Divisionat", Icons.Filled.Menu, "Divisionat"),
-        TabItem("Ottelut", Icons.Filled.DateRange, "Ottelut")
+        TabItem(stringResource(R.string.home), Icons.Filled.Home, "Home"),
+        TabItem(stringResource(R.string.conferences), Icons.Filled.Menu, "Konferenssit"),
+        TabItem(stringResource(R.string.divisions), Icons.Filled.Menu, "Divisionat"),
+        TabItem(stringResource(R.string.games), Icons.Filled.DateRange, "Ottelut")
     )
     BasicLayout(items, standingsViewModel, gamesViewModel, teamGamesViewModel)
 }
@@ -92,7 +93,8 @@ fun BasicLayout(
     Scaffold(
         topBar = {
             NHLTopAppBar(
-                title = "NHL",
+                title = (stringResource(R.string.app_title)),
+                navController = navController
             )
         },
         bottomBar = {
@@ -183,14 +185,42 @@ fun GreetingPreview() {
 @Composable
 fun NHLTopAppBar(
     title: String,
+    navController: NavController,
 ) {
+    var isTeamGamesPage by remember { mutableStateOf(false) }
+
+    // Track route changes
+    LaunchedEffect(navController) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            isTeamGamesPage = destination.route == "TeamGames"
+        }
+    }
+
     TopAppBar(
         title = {
-            Row(modifier = Modifier.fillMaxWidth(),verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
                 Text(
                     text = title,
-                    color = Color.White // Corrected parameter name
+                    color = Color(0xFFC4CED4)
                 )
+            }
+        },
+        // Use either a back button or an empty composable
+        navigationIcon = {
+            if (isTeamGamesPage) {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = (stringResource(R.string.back)),
+                        tint = Color(0xFFC4CED4)
+                    )
+                }
+            } else {
+                Spacer(modifier = Modifier) // Empty composable as placeholder
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(
@@ -198,3 +228,4 @@ fun NHLTopAppBar(
         )
     )
 }
+

@@ -33,7 +33,6 @@ class GamesViewModel: ViewModel() {
             gamesUIState = GamesUIState.Loading
             try {
                 val response = gamesApi.getGames(date)
-                Log.d("GamesViewModel", "New games response: $response")
                 gamesUIState = GamesUIState.Success(response)
                 currentDate = response.currentDate // Update current date
             } catch (e: Exception) {
@@ -46,7 +45,6 @@ class GamesViewModel: ViewModel() {
     fun loadPreviousDate() {
         if (gamesUIState is GamesUIState.Success) {
             val prevDate = (gamesUIState as GamesUIState.Success).games.prevDate
-            Log.d("GamesViewModel", "Previous Date: $prevDate") // Log previous date
             getGamesList(prevDate )
         }
     }
@@ -54,7 +52,6 @@ class GamesViewModel: ViewModel() {
     fun loadNextDate() {
         if (gamesUIState is GamesUIState.Success) {
             val nextDate = (gamesUIState as GamesUIState.Success).games.nextDate
-            Log.d("GamesViewModel", "Next Date: $nextDate") // Log next date
             getGamesList(nextDate)
         }
     }

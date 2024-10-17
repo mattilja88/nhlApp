@@ -23,6 +23,8 @@ import androidx.navigation.NavHostController
 import com.example.nhlapp.ui.viewmodel.StandingsUIState
 import com.example.nhlapp.ui.viewmodel.TeamGamesUIState
 import com.example.nhlapp.ui.viewmodel.TeamGamesViewModel
+import androidx.compose.ui.res.stringResource
+import com.example.nhlapp.R
 
 @Composable
 fun Divisionat(
@@ -87,7 +89,7 @@ fun Divisionat(
                     containerColor = Color.DarkGray,
                     contentColor = Color.White)
                 ) {
-                Text(text = "Läntiset Divisionat")
+                Text(text = stringResource(R.string.west_divs))
             }
 
             Button(onClick = {
@@ -97,7 +99,7 @@ fun Divisionat(
                 containerColor = Color.DarkGray,
                 contentColor = Color.White )
             ) {
-                Text(text = "Itäinen konferenssi")
+                Text(text = stringResource(R.string.east_divs))
             }
         }
     }
