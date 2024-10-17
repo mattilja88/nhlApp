@@ -53,7 +53,7 @@ fun KokoLiiga(
             ) {
                 Text(
                     text = stringResource(R.string.joukkue),
-                    modifier = Modifier.weight(4.5f),
+                    modifier = Modifier.weight(5f),
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
@@ -120,7 +120,7 @@ fun KokoLiiga(
             ) {
                 Text(
                     text = team.teamCommonName.default,
-                    modifier = Modifier.weight(4.5f)
+                    modifier = Modifier.weight(5f)
                 )
                 Text(
                     text = team.gamesPlayed.toString(),

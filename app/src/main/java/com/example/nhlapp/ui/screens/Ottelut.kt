@@ -82,7 +82,7 @@ fun OtteluLista(games: GameWeekResponse, gamesViewModel: GamesViewModel) {
             val finnishDateStyle = convertToFinnishDate(currentDate = date)
             Text(
                 text = finnishDateStyle,
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp),
+                modifier = Modifier.padding(bottom = 8.dp),
                 color = silver
             )
         }
@@ -101,18 +101,6 @@ fun OtteluLista(games: GameWeekResponse, gamesViewModel: GamesViewModel) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 16.dp, bottom = 1.dp),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        val time = game.startTimeUTC
-                        val finnishTime = convertToFinnishTime(startTimeUTC = time)
-
-                        Text(text = finnishTime)
-                    }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
                             .padding(vertical = 8.dp),
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
@@ -128,7 +116,7 @@ fun OtteluLista(games: GameWeekResponse, gamesViewModel: GamesViewModel) {
                             ),
                             contentDescription = "${game.homeTeam.name.default} logo",
                             modifier = Modifier
-                                .size(100.dp)
+                                .size(80.dp)
                                 .padding(horizontal = 2.dp)
                         )
                         Text(
@@ -150,7 +138,7 @@ fun OtteluLista(games: GameWeekResponse, gamesViewModel: GamesViewModel) {
                             ),
                             contentDescription = "${game.awayTeam.name.default} logo",
                             modifier = Modifier
-                                .size(100.dp)
+                                .size(80.dp)
                                 .padding(horizontal = 2.dp)
                         )
                     }
@@ -197,7 +185,7 @@ fun OtteluLista(games: GameWeekResponse, gamesViewModel: GamesViewModel) {
         ) {
             Button(
                 onClick = { gamesViewModel.loadPreviousDate() },
-                modifier = Modifier.padding(vertical = 8.dp),
+                modifier = Modifier.padding(top = 8.dp),
                 enabled = games.prevDate != null,
                 colors = ButtonDefaults.buttonColors(silver)
             ) {

@@ -89,7 +89,7 @@ fun Divisionat(
                     containerColor = Color.DarkGray,
                     contentColor = Color.White)
                 ) {
-                Text(text = stringResource(R.string.west_divs))
+                Text(text = "Läntiset Divisionat")
             }
 
             Button(onClick = {
@@ -99,7 +99,7 @@ fun Divisionat(
                 containerColor = Color.DarkGray,
                 contentColor = Color.White )
             ) {
-                Text(text = stringResource(R.string.east_divs))
+                Text(text = "Itäiset Divisionat")
             }
         }
     }
