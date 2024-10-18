@@ -193,6 +193,7 @@ fun OtteluLista(games: GameWeekResponse, gamesViewModel: GamesViewModel) {
             }
             Button(
                 onClick = { gamesViewModel.loadNextDate() },
+                modifier = Modifier.padding(top = 8.dp),
                 enabled = games.nextDate != null,
                 colors = ButtonDefaults.buttonColors(silver)
             ) {
